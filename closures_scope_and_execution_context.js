@@ -315,21 +315,29 @@ function createSecretHolder(secret) {
 }
 
 // /*** Uncomment these to check your work! ***/
-let obj = createSecretHolder(5);
-obj.getSecret(); // => returns 5
-obj.setSecret(2);
-obj.getSecret(); // => returns 2
+// let obj = createSecretHolder(5);
+// obj.getSecret(); // => returns 5
+// obj.setSecret(2);
+// obj.getSecret(); // => returns 2
 
 // CHALLENGE 14
-function callTimes() {}
+//Write a function, callTimes, that returns a new function.
+//The new function should return the number of times it’s been called.
+function callTimes() {
+  let counter = 0;
+  return () => {
+    ++counter;
+    console.log(counter);
+  };
+}
 
 // /*** Uncomment these to check your work! ***/
-// let myNewFunc1 = callTimes();
-// let myNewFunc2 = callTimes();
-// myNewFunc1(); // => 1
-// myNewFunc1(); // => 2
-// myNewFunc2(); // => 1
-// myNewFunc2(); // => 2
+let myNewFunc1 = callTimes();
+let myNewFunc2 = callTimes();
+myNewFunc1(); // => 1
+myNewFunc1(); // => 2
+myNewFunc2(); // => 1
+myNewFunc2(); // => 2
 
 // CHALLENGE 15
 function russianRoulette(num) {}
