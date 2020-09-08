@@ -332,23 +332,40 @@ function callTimes() {
 }
 
 // /*** Uncomment these to check your work! ***/
-let myNewFunc1 = callTimes();
-let myNewFunc2 = callTimes();
-myNewFunc1(); // => 1
-myNewFunc1(); // => 2
-myNewFunc2(); // => 1
-myNewFunc2(); // => 2
+// let myNewFunc1 = callTimes();
+// let myNewFunc2 = callTimes();
+// myNewFunc1(); // => 1
+// myNewFunc1(); // => 2
+// myNewFunc2(); // => 1
+// myNewFunc2(); // => 2
 
 // CHALLENGE 15
-function russianRoulette(num) {}
+//Create a function russianRoulette that accepts a number (let us call it n), and returns a function.
+//The returned function will take no arguments,
+//    and will return the string 'click' the first n - 1 number of times it is invoked.
+//    On the very next invocation (the nth invocation), the returned function will return the string 'bang'.
+//    On every invocation after that, the returned function returns the string 'reload to play again'.
+function russianRoulette(num) {
+  let counter = 0;
+  return () => {
+    ++counter;
+    if (counter <= num - 1) {
+      return "click";
+    } else if (counter == num) {
+      return "bang";
+    } else {
+      return "reload to play again";
+    }
+  };
+}
 
 // /*** Uncomment these to check your work! ***/
-// const play = russianRoulette(3);
-// console.log(play()); // => should log 'click'
-// console.log(play()); // => should log 'click'
-// console.log(play()); // => should log 'bang'
-// console.log(play()); // => should log 'reload to play again'
-// console.log(play()); // => should log 'reload to play again'
+const play = russianRoulette(3);
+console.log(play()); // => should log 'click'
+console.log(play()); // => should log 'click'
+console.log(play()); // => should log 'bang'
+console.log(play()); // => should log 'reload to play again'
+console.log(play()); // => should log 'reload to play again'
 
 // CHALLENGE 16
 function average() {}
