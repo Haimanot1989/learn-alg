@@ -279,19 +279,18 @@ function dateStamp(func) {
 // except all instances of first strings (of saved pairs) will be replaced with their corresponding second strings
 //(of those saved pairs).
 function censor() {
-  let retainedArgs = {};
-  return (...args) => {
-    if (args.length == 1) {
-      let newString = args[0];
-      Object.keys(retainedArgs).forEach(key => {
-        const re = new RegExp(key, "gi");
-        newString = newString.replace(re, retainedArgs[key]);
-      });
-      return newString;
+  let cache = {};
+  return (stringOne, stringTwo) => {
+    if (stringTwo) {
+      cache[stringOne] = stringTwo;
+      return;
     }
-    if (args.length == 2) {
-      retainedArgs[args[0]] = args[1];
-    }
+
+    Object.keys(cache).forEach(key => {
+      const re = new RegExp(key, "gi");
+      stringOne = stringOne.replace(re, cache[key]);
+    });
+    return stringOne;
   };
 }
 
