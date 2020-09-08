@@ -295,19 +295,30 @@ function censor() {
 }
 
 // /*** Uncomment these to check your work! ***/
-const changeScene = censor();
-changeScene("dogs", "cats");
-changeScene("quick", "slow");
-console.log(changeScene("The quick, brown fox jumps over the lazy dogs.")); // => should log 'The slow, brown fox jumps over the lazy cats.'
+// const changeScene = censor();
+// changeScene("dogs", "cats");
+// changeScene("quick", "slow");
+// console.log(changeScene("The quick, brown fox jumps over the lazy dogs.")); // => should log 'The slow, brown fox jumps over the lazy cats.'
 
 // CHALLENGE 13
-function createSecretHolder(secret) {}
+//There's no such thing as private properties on a JavaScript object!
+//But, maybe there are? Implement a function createSecretHolder(secret) which accepts any value as secret
+//and returns an object with ONLY two methods. getSecret() which returns the secret setSecret() which sets the secret
+function createSecretHolder(secret) {
+  function getSecret() {
+    console.log(secret);
+  }
+  function setSecret(newSecret) {
+    secret = newSecret;
+  }
+  return { getSecret, setSecret };
+}
 
 // /*** Uncomment these to check your work! ***/
-// obj = createSecretHolder(5)
-// obj.getSecret() // => returns 5
-// obj.setSecret(2)
-// obj.getSecret() // => returns 2
+let obj = createSecretHolder(5);
+obj.getSecret(); // => returns 5
+obj.setSecret(2);
+obj.getSecret(); // => returns 2
 
 // CHALLENGE 14
 function callTimes() {}
