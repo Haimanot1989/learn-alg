@@ -360,24 +360,51 @@ function russianRoulette(num) {
 }
 
 // /*** Uncomment these to check your work! ***/
-const play = russianRoulette(3);
-console.log(play()); // => should log 'click'
-console.log(play()); // => should log 'click'
-console.log(play()); // => should log 'bang'
-console.log(play()); // => should log 'reload to play again'
-console.log(play()); // => should log 'reload to play again'
+// const play = russianRoulette(3);
+// console.log(play()); // => should log 'click'
+// console.log(play()); // => should log 'click'
+// console.log(play()); // => should log 'bang'
+// console.log(play()); // => should log 'reload to play again'
+// console.log(play()); // => should log 'reload to play again'
 
 // CHALLENGE 16
-function average() {}
+//Create a function average that accepts no arguments,
+//and returns a function (that will accept either a number as its lone argument,
+//or no arguments at all). When the returned function is invoked with a number,
+//the output should be average of all the numbers have ever been passed into that function
+//(duplicate numbers count just like any other number).
+//When the returned function is invoked with no arguments, the current average is outputted.
+//If the returned function is invoked with no arguments before any numbers are passed in, then it should return 0.
+function average() {
+  let numbers = [];
+  let average = 0;
+  return num => {
+    if (num) {
+      numbers.push(num);
+      console.log("numbers.length", numbers.length);
+      console.log("average", average);
+      console.log("numbers", numbers);
+      console.log("num", num);
+      //average = (average + num) / numbers.length;
+      let sum = numbers.reduce((a, b) => {
+        return a + b;
+      }, 0);
+      average = sum / numbers.length;
+
+      //average = numbers.forEach()
+    }
+    return average;
+  };
+}
 
 // /*** Uncomment these to check your work! ***/
-// const avgSoFar = average();
-// console.log(avgSoFar()); // => should log 0
-// console.log(avgSoFar(4)); // => should log 4
-// console.log(avgSoFar(8)); // => should log 6
-// console.log(avgSoFar()); // => should log 6
-// console.log(avgSoFar(12)); // => should log 8
-// console.log(avgSoFar()); // => should log 8
+const avgSoFar = average();
+console.log(avgSoFar()); // => should log 0
+console.log(avgSoFar(4)); // => should log 4
+console.log(avgSoFar(8)); // => should log 6
+console.log(avgSoFar()); // => should log 6
+console.log(avgSoFar(12)); // => should log 8
+console.log(avgSoFar()); // => should log 8
 
 // CHALLENGE 17
 function makeFuncTester(arrOfTests) {}
